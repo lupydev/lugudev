@@ -8,8 +8,11 @@ def bullet(
         rx.icon(
             "chevrons-right",
             size=20,
-            width="20%",
+            width="31px",
         ),
-        rx.text(text),
+        rx.text(
+            text,
+            width="100%",
+        ),
         align="center",
     )
