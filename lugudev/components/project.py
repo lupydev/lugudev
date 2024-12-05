@@ -1,14 +1,11 @@
 import reflex as rx
 
-from lugudev.components import external
-
 
 def project_card_right(
     title: str,
     text: str,
     img: str,
-    width_external: str | None = None,
-    height_external: str | None = None,
+    *args: rx.Component,
 ) -> rx.Component:
     return rx.card(
         rx.grid(
@@ -16,7 +13,9 @@ def project_card_right(
                 src=img,
                 width="100%",
                 height="300px",
-                border="1px solid #2f3135",
+                padding="1em",
+                border_bottom=f"1px solid {rx.color("gray", 6)}",
+                object_fit="contain",
             ),
             rx.vstack(
                 rx.heading(title),
@@ -27,23 +26,11 @@ def project_card_right(
                 ),
                 rx.divider(),
                 rx.hstack(
-                    external(
-                        "github_light.svg",
-                        "github_dark.svg",
-                        "https://github.com/lupydev",
-                        width_external,
-                        height_external,
-                    ),
-                    external(
-                        "github_light.svg",
-                        "github_dark.svg",
-                        "https://github.com/lupydev",
-                        width_external,
-                        height_external,
-                    ),
+                    args,
                     align_self="end",
                 ),
                 padding="16px",
+                border_left=f"1px solid {rx.color("gray", 6)}",
             ),
             grid_template_columns=[
                 "1fr",  # 1 column for mobile
@@ -60,8 +47,7 @@ def project_card_left(
     title: str,
     text: str,
     img: str,
-    width_external: str | None = None,
-    height_external: str | None = None,
+    *args: rx.Component,
 ) -> rx.Component:
     return rx.card(
         rx.grid(
@@ -74,29 +60,18 @@ def project_card_left(
                 ),
                 rx.divider(),
                 rx.hstack(
-                    external(
-                        "github_light.svg",
-                        "github_dark.svg",
-                        "https://github.com/lupydev",
-                        width_external,
-                        height_external,
-                    ),
-                    external(
-                        "github_light.svg",
-                        "github_dark.svg",
-                        "https://github.com/lupydev",
-                        width_external,
-                        height_external,
-                    ),
+                    args,
                     align_self="end",
                 ),
                 padding="16px",
+                border_right=f"1px solid {rx.color("gray", 6)}",
             ),
             rx.image(
                 src=img,
                 width="100%",
                 height="300px",
-                border="1px solid #2f3135",
+                padding="1em",
+                object_fit="contain",
             ),
             grid_template_columns=[
                 "1fr",  # 1 column for mobile
