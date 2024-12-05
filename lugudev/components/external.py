@@ -33,3 +33,23 @@ def external(
         href=href,
         is_external=True,
     )
+
+
+def external_icon(
+    icon: str = "external-link",
+    href: str = "",
+) -> rx.Component:
+    return rx.link(
+        rx.card(
+            rx.center(
+                rx.icon(icon),
+                align="center",
+                justify="center",
+            ),
+            padding="12px",
+        ),
+        href=href,
+        is_external=True,
+        color_scheme="gray",
+        high_contrast=True,
+    )
