@@ -1,28 +1,36 @@
 import reflex as rx
 
+from lugudev.views import experience, footer, hero, mobile_view, projects_view
+from lugudev.components import navbar_icons
+
 
 def index() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            # rx.text(
-            #     "Get started by editing ",
-            #     rx.code(f"{config.app_name}/{config.app_name}.py"),
-            #     size="5",
-            # ),
-            # rx.link(
-            #     rx.button("Check out our docs!"),
-            #     href="https://reflex.dev/docs/getting-started/introduction/",
-            #     is_external=True,
-            # ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
-            id="tuku",
+    return rx.vstack(
+        navbar_icons(),
+        rx.container(
+            rx.color_mode.button(
+                position="top-right",
+                top="16px",
+                right="16px",
+                width="24px",
+                height="24px",
+                padding="0",
+            ),
+            rx.vstack(
+                hero(),
+                experience(),
+                mobile_view(),
+                projects_view(),
+                gap="80px",
+                justify="center",
+                align="center",
+                min_height="85vh",
+                id="tuku",
+            ),
+            footer(),
+            padding="124px 16px 0",
         ),
-        rx.logo(),
+        align="center",
     )
 
 
