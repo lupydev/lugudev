@@ -59,5 +59,6 @@ def experience() -> rx.Component:
             ),
             width="100%",
             spacing="8",
+            id="experience",
         )
     )

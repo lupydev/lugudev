@@ -60,6 +60,7 @@ def mobile_view() -> rx.Component:
                         "Trabajé bajo la metodología Scrum, cumpliendo con entregas puntuales y adaptándome rápidamente a cambios de requerimientos."
                     ),
                 ),
+                id="experiencem",
             ),
             rx.vstack(
                 title("Poyectos"),
@@ -71,6 +72,7 @@ def mobile_view() -> rx.Component:
                 ),
                 align="center",
                 width="100%",
+                id="projectsm",
             ),
             spacing="9",
         ),

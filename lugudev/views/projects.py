@@ -20,5 +20,6 @@ def projects_view() -> rx.Component:
             ),
             #! el siguiente proyecto debe usar el componente project_card_left
             spacing="8",
+            id="projects",
         ),
     )

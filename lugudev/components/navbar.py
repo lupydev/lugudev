@@ -9,36 +9,46 @@ class DrawerState(rx.State):
         self.is_open = not self.is_open
 
 
-def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
+def navbar_icons_item(
+    text: str,
+    icon: str,
+    url: str,
+) -> rx.Component:
     return rx.link(
         rx.hstack(
             rx.icon(icon),
             rx.text(text, size="4", weight="medium"),
         ),
         href=url,
-    )
-
-
-def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
-    return rx.link(
-        rx.hstack(
-            rx.icon(icon, size=16),
-            rx.text(text, size="3", weight="medium"),
-        ),
-        href=url,
+        high_contrast=True,
     )
 
 
 def navbar_icons() -> rx.Component:
     return rx.box(
         rx.tablet_and_desktop(
-            rx.hstack(
-                navbar_icons_item("Home", "home", "/#"),
-                navbar_icons_item("Experiencia", "badge-check", "/#"),
-                navbar_icons_item("Proyectos", "briefcase-business", "/#"),
-                justify="center",
-                align_items="center",
-                spacing="6",
+            rx.container(
+                rx.hstack(
+                    navbar_icons_item("Home", "home", "/#"),
+                    navbar_icons_item(
+                        "Experiencia",
+                        "badge-check",
+                        "/#experience",
+                    ),
+                    navbar_icons_item(
+                        "Proyectos",
+                        "briefcase-business",
+                        "/#projects",
+                    ),
+                    justify="center",
+                    align_items="center",
+                    spacing="6",
+                    bg=rx.color("gray", 3),
+                    padding="1em",
+                    border_bottom_left_radius="8px",
+                    border_bottom_right_radius="8px",
+                ),
+                padding="0",
             ),
         ),
         rx.mobile_only(
@@ -51,14 +61,33 @@ def navbar_icons() -> rx.Component:
                     rx.drawer.content(
                         rx.flex(
                             rx.drawer.close(
-                                rx.box(rx.button("Close")), align_self="end"
+                                rx.box(
+                                    rx.icon("x"),
+                                ),
+                                align_self="end",
                             ),
                             rx.divider(),
                             rx.drawer.close(
-                                navbar_icons_item("Home", "home", "/#"),
+                                navbar_icons_item(
+                                    "Home",
+                                    "home",
+                                    "/#",
+                                ),
                             ),
-                            navbar_icons_item("Experiencia", "badge-check", "/#"),
-                            navbar_icons_item("Proyectos", "briefcase-business", "/#"),
+                            rx.drawer.close(
+                                navbar_icons_item(
+                                    "Experiencia",
+                                    "badge-check",
+                                    "/#experiencem",
+                                ),
+                            ),
+                            rx.drawer.close(
+                                navbar_icons_item(
+                                    "Proyectos",
+                                    "briefcase-business",
+                                    "/#projectsm",
+                                ),
+                            ),
                             align_items="start",
                             direction="column",
                             width="100%",
@@ -68,18 +97,16 @@ def navbar_icons() -> rx.Component:
                         right="auto",
                         height="100%",
                         width="20em",
-                        padding="2em",
-                        background_color="#191c1d",
-                        # background_color=rx.color("green", 3)
-                    )
+                        padding="1em 2em",
+                        bg=rx.color("gray", 3),
+                    ),
                 ),
                 direction="left",
             ),
+            bg=rx.color("gray", 3),
+            padding="1em",
         ),
-        bg=rx.color("accent", 3),
-        padding="1em",
         position="fixed",
-        # top="0px",
         z_index="5",
         width="100%",
     )
