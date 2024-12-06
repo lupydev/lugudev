@@ -7,6 +7,7 @@ def bullet(
     return rx.hstack(
         rx.icon(
             "chevrons-right",
+            color=rx.color("iris", 9),
             size=20,
             width="31px",
         ),
