@@ -35,4 +35,8 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index)
+app.add_page(
+    index,
+    title="Lugu | Backend Developer",
+    description="Hola! Mi nombre es Luis aka Lugu. Soy un desarrollador de software especializado en el backend, mi lenguaje principal es Python 🐍",
+)
